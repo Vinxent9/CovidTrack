@@ -2,10 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
-import {createDrawerNavigator} from '@react-navigation/drawer'
+import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer'
 import {Header} from 'react-native-elements'
+import {Icon} from 'react-native-elements'
 import Comp1 from './component/Comp1'
 import HomeScreen from './component/HomeScreen'
+import SettingScreen from './component/SettingScreen'
 
 
 
@@ -31,16 +33,16 @@ const DetailScreen = ({navigation}) => {
 
 
 
-const SettingScreen = ({navigation}) => {
-  return(
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notification')}
-        title="Go to notifications"
-      />
-    </View>
-  )
-}
+// const SettingScreen = ({navigation}) => {
+//   return(
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//       <Button
+//         onPress={() => navigation.navigate('Notification')}
+//         title="Go to notifications"
+//       />
+//     </View>
+//   )
+// }
 
 const NotificationScreen = ({navigation}) => {
   return(
@@ -83,9 +85,9 @@ const App = () => {
         <Stack.Screen name = "Details" component = {DetailScreen} />
         </Stack.Navigator> */}
         <Drawer.Navigator initialRouteName = "Home">
+          
           <Drawer.Screen name = "Home" component = {HomeScreen} />
           <Drawer.Screen name = "Setting" component = {SettingScreen} />
-          <Drawer.Screen name = "Notification" component = {NotificationScreen} />
           <Drawer.Screen name = "Comp1" component = {Comp1} />
         </Drawer.Navigator>
       
