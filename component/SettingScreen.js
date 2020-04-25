@@ -58,7 +58,6 @@ const section2 = [
 
 const SettingScreen = ({navigation}) => {
     return (
-
         <View>
              <Header
                 placement="left"

@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button,ScrollView } from 'react-native';
 import {Header,Avatar,Card,ListItem} from 'react-native-elements'
 
+
 const menuItem = [
     {
         nama:'Statistic'
