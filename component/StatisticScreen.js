@@ -62,9 +62,6 @@ class StatisticScreen extends React.Component {
         fetch('https://covid19.mathdro.id/api')
         .then(response => response.json())
         .then(json => this.setState({meninggal: json.deaths,refreshing:false}))
-        .catch((error) => {
-            console.error(error);
-          })
     }
  
     getApiRecovered = () => {
@@ -72,9 +69,6 @@ class StatisticScreen extends React.Component {
         fetch('https://covid19.mathdro.id/api')
         .then(response => response.json())
         .then(json => this.setState({sembuh: json.recovered,refreshing:false}))
-        .catch((error) => {
-            console.error(error);
-          })
     }
 
     getApi = () => {
@@ -82,9 +76,6 @@ class StatisticScreen extends React.Component {
         fetch('https://covid19.mathdro.id/api')
         .then(response => response.json())
         .then(json => this.setState({daftar: json.confirmed,refreshing:false}))
-        .catch((error) => {
-            console.error(error);
-          })
     }
 
     render(){
@@ -119,9 +110,10 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     dataContainer:{
+        flex:1,
         padding:20,
         marginHorizontal:10,
-        flex:1,
+        justifyContent: 'center',
         alignItems:'center'
     }
   });

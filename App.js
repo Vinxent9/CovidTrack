@@ -9,7 +9,7 @@ import Comp1 from './component/Comp1'
 import HomeScreen from './component/HomeScreen'
 import SettingScreen from './component/SettingScreen'
 import StatisticScreen from './component/StatisticScreen'
-
+import IndonesiaData from './component/IndonesiaData'
 
 
 //detailscreen navigator function
@@ -91,6 +91,7 @@ const App = () => {
           <Drawer.Screen name = "Setting" component = {SettingScreen} />
           <Drawer.Screen name = "Comp1" component = {Comp1} />
           <Drawer.Screen name = "Statistic" component = {StatisticScreen} />
+          <Drawer.Screen name = "Indonesia" component = {IndonesiaData} />
         </Drawer.Navigator>
       
     </NavigationContainer>
