@@ -8,30 +8,43 @@ class IndonesiaData extends React.Component {
             positif: [],
             meninggal: [],
             sembuh:[],
-            province:[],
+            province:[{pid:'prov'},],
             refreshing : false
         }
     }
 
     renderItem = ({item}) => (
         <View style={styles.dataContainer}>
+            
             <Text>
                 {item.provinsi}
             </Text>
-            <Text>
-                Positif:
-                {item.kasusPosi}    
-            </Text>
-            <Text>
-                Meninggal:
-                {item.kasusMeni}  
-            </Text>
-            <Text>
-                Sembuh:
-                {item.kasusSemb}  
-            </Text>
+
+            <View style={styles.dataContainerStatus}>
+                
+                <View style={styles.dataContainerStatYellow}>
+                    <Text>                
+                        {item.kasusPosi}
+                    </Text>
+                </View> 
+                
+                <View style={styles.dataContainerStatRed}>
+                    <Text>                
+                        {item.kasusMeni}
+                    </Text>
+                </View>
+
+                <View style={styles.dataContainerStatRecovered}>
+                    <Text>                
+                        {item.kasusSemb}
+                    </Text>
+                </View> 
+
+            </View>
         </View>
     )
+    
+
 
     componentDidMount = () => {
        this.getApiProvinsi()
@@ -50,17 +63,24 @@ class IndonesiaData extends React.Component {
 
     render(){
         return(
-            <View>
-                <Text>This is test</Text>
+            <View style={{flex:1}}>
+                
+                <Text style={styles.styleJudul}>Data Covid 19 Indonesia</Text>
+                
+                <View style={{width:10,height:10,backgroundColor:'red',borderRadius:8}}></View>
+                <Text>meninggal</Text>
+                <View style={{width:10,height:10,backgroundColor:'green',borderRadius:8}}></View>
+                <Text>Sembuh</Text>
+                <View style={{width:10,height:10,backgroundColor:'yellow',borderRadius:8}}></View>
+                <Text>Positif</Text>
                 
                 <FlatList
                     data={this.state.province}
-                    keyExtractor={item => item.fid.toString()}
+                    keyExtractor={item => item.pid}
                     renderItem={this.renderItem}
                     refreshing={this.state.refreshing}
                     onRefresh={this.onRefresh}
                 />
-            
             </View>
         )
     }
@@ -78,13 +98,50 @@ const styles = StyleSheet.create({
     dataContainer:{
         padding:10,
         borderBottomWidth:1,
-        paddingRight:10,
         flex:1,
-        alignItems:'flex-start'
+        flexDirection:'row',
+    },
+    dataContainerStatus:{
+        flex:1,
+        alignItems:'center',
+        borderRadius:10,
+        flexDirection:'row-reverse'
     },
     dataContainerStat:{
         flex:1,
-        alignItems:'flex-end'
+        alignItems:'center',
+        backgroundColor:'blue',
+        borderRadius:10
+    },
+    dataContainerStatRed:{
+        alignItems:'center',
+        backgroundColor:'red',
+        borderRadius:8,
+        padding:3,
+        width:45,
+        marginHorizontal:10
+    },
+    dataContainerStatYellow:{
+        alignItems:'center',
+        backgroundColor:'yellow',
+        borderRadius:8,
+        padding:3,
+        width:45
+        
+    },
+    dataContainerStatRecovered:{
+        alignItems:'center',
+        backgroundColor:'green',
+        borderRadius:8,
+        padding:3,
+        width:45
+       
+    },
+    styleJudul:{
+        fontSize:20,
+        fontWeight:'bold',
+        alignItems:'center',
+        textAlign:'center'
     }
   });
 

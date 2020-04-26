@@ -22,9 +22,9 @@ class StatisticScreen extends React.Component {
     constructor() {
         super()
         this.state = {
-            daftar: [],
-            meninggal: [],
-            sembuh:[],
+            daftar: [{gid : 'konfirm'},],
+            meninggal: [{gid:'meninggal'},],
+            sembuh:[{gid:'sembuh'},],
             refreshing : false
         }
     }
@@ -86,7 +86,7 @@ class StatisticScreen extends React.Component {
                     <FlatList
                         horizontal
                         data={[this.state.daftar,this.state.meninggal,this.state.sembuh]}
-                        keyExtractor={item => toString()}
+                        keyExtractor={item => item.gid}
                         renderItem={this.renderItem}
                         refreshing={this.state.refreshing}
                         onRefresh={this.onRefresh}
