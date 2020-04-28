@@ -1,14 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button,ScrollView,FlatList } from 'react-native';
 
-class IndonesiaData extends React.Component {
+class BasicIndonesiaData extends React.Component {
     constructor() {
         super()
         this.state = {
-            positif: [],
-            meninggal: [],
-            sembuh:[],
-            province:[{pid:'prov'},],
+            province:[],
             refreshing : false
         }
     }
@@ -22,23 +19,24 @@ class IndonesiaData extends React.Component {
 
             <View style={styles.dataContainerStatus}>
                 
-                <View style={styles.dataContainerStatYellow}>
-                    <Text>                
-                        {item.kasusPosi}
+                <View style={styles.dataContainerStatRecovered}>
+                    <Text style={{fontWeight:'bold'}}>                
+                        {item.kasusSemb}
                     </Text>
                 </View> 
                 
                 <View style={styles.dataContainerStatRed}>
-                    <Text>                
+                    <Text style={{fontWeight:'bold'}}>                
                         {item.kasusMeni}
                     </Text>
                 </View>
 
-                <View style={styles.dataContainerStatRecovered}>
-                    <Text>                
-                        {item.kasusSemb}
+                <View style={styles.dataContainerStatYellow}>
+                    <Text style={{fontWeight:'bold'}}>                
+                        {item.kasusPosi}
                     </Text>
                 </View> 
+               
 
             </View>
         </View>
@@ -54,29 +52,22 @@ class IndonesiaData extends React.Component {
         this.getApiProvinsi()
     }
 
-     getApiProvinsi = () => {
+     getApiProvinsi = async () => {
         this.setState({refreshing:true})
-        fetch('https://indonesia-covid-19.mathdro.id/api/provinsi')
-        .then(response => response.json())
-        .then(json => this.setState({province: json.data,refreshing:false}))
+        const response = await fetch('https://indonesia-covid-19.mathdro.id/api/provinsi')
+        const json = await response.json()
+        this.setState({province: json.data,refreshing:false})
     }
 
     render(){
         return(
-            <View style={{flex:1}}>
+            <View style={styles.container}>
                 
-                <Text style={styles.styleJudul}>Data Covid 19 Indonesia</Text>
-                
-                <View style={{width:10,height:10,backgroundColor:'red',borderRadius:8}}></View>
-                <Text>meninggal</Text>
-                <View style={{width:10,height:10,backgroundColor:'green',borderRadius:8}}></View>
-                <Text>Sembuh</Text>
-                <View style={{width:10,height:10,backgroundColor:'yellow',borderRadius:8}}></View>
-                <Text>Positif</Text>
-                
+                <Text style={styles.styleJudul}>Indonesia</Text>
+                   
                 <FlatList
                     data={this.state.province}
-                    keyExtractor={item => item.pid}
+                    keyExtractor={({provinsi}, index) => provinsi}
                     renderItem={this.renderItem}
                     refreshing={this.state.refreshing}
                     onRefresh={this.onRefresh}
@@ -91,9 +82,9 @@ class IndonesiaData extends React.Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      backgroundColor: '#E9EBFA',
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
     },
     dataContainer:{
         padding:10,
@@ -107,15 +98,9 @@ const styles = StyleSheet.create({
         borderRadius:10,
         flexDirection:'row-reverse'
     },
-    dataContainerStat:{
-        flex:1,
-        alignItems:'center',
-        backgroundColor:'blue',
-        borderRadius:10
-    },
     dataContainerStatRed:{
         alignItems:'center',
-        backgroundColor:'red',
+        backgroundColor:'#FE180B',
         borderRadius:8,
         padding:3,
         width:45,
@@ -123,7 +108,7 @@ const styles = StyleSheet.create({
     },
     dataContainerStatYellow:{
         alignItems:'center',
-        backgroundColor:'yellow',
+        backgroundColor:'#FAAD14',
         borderRadius:8,
         padding:3,
         width:45
@@ -131,7 +116,7 @@ const styles = StyleSheet.create({
     },
     dataContainerStatRecovered:{
         alignItems:'center',
-        backgroundColor:'green',
+        backgroundColor:'#52C41A',
         borderRadius:8,
         padding:3,
         width:45
@@ -145,4 +130,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default IndonesiaData
+export default BasicIndonesiaData
