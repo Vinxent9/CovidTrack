@@ -10,21 +10,24 @@ const menuItem = [
         subjudul:'Check the current Covid-19 Data',
         ikon:'ios-stats',
         tipe:'ionicon',
-        press:'Statistic'
+        press:'Statistic',
+        ikoncolor:'#FFE082'
     },
     {
         nama:'News',
         subjudul:'Check out current news about Covid-19',
         ikon:'ios-today',
         tipe:'ionicon',
-        press:'Statistic'
+        press:'News Update',
+        ikoncolor:'#9DBFF9'
     },
     {
         nama:'Info and Tips',
         subjudul:'Useful Information about Covid-19',
         ikon:'ios-happy',
         tipe:'ionicon',
-        press:'Statistic'
+        press:'Info and Tips',
+        ikoncolor:'#A5D6A7'
     },
 
 ]
@@ -76,7 +79,7 @@ const HomeScreen = ({navigation}) => {
                     ref={playerRef}
                     height={200}
                     width={300}
-                    videoId={"BFahTlWOph0"}
+                    videoId={"aKLDmBMtkMQ"}
                     play={playing}
                     onChangeState={event => console.log(event)}   
                     onError={e => console.log(e)}
@@ -97,8 +100,8 @@ const HomeScreen = ({navigation}) => {
                     <ListItem
                         containerStyle={styles.listContainer}
                         key={i}
-                        leftAvatar={{icon:{name:list.ikon, type:list.tipe,color:'#1f1f1f'},overlayContainerStyle:{backgroundColor:'#A4ADE9'}}}
-                        rightIcon={{name:'ios-arrow-dropright',type:'ionicon',color:'#A4ADE9'}}
+                        leftAvatar={{icon:{name:list.ikon, type:list.tipe,color:list.ikoncolor},overlayContainerStyle:{backgroundColor:'#1f1f1f'}}}
+                        rightIcon={{name:'ios-arrow-dropright',type:'ionicon',color:'#9DBFF9'}}
                         title={list.nama}
                         subtitle={list.subjudul}
                         titleStyle={{color:'white'}}

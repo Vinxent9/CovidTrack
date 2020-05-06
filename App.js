@@ -2,12 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
-import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer'
+import {createDrawerNavigator} from '@react-navigation/drawer'
 import {Icon} from 'react-native-elements'
 
 
 
-
+import MaintenanceScreen from './component/MaintenanceScreen'
 import HomeScreen from './component/HomeScreen'
 import StatisticScreen from './component/StatisticScreen'
 import QuickViewScreen from './component/QuickViewScreen'
@@ -15,6 +15,8 @@ import GlobalStatScreen from './component/GlobalStatScreen'
 import IndonesiaStatScreen from './component/IndonesiaStatScreen'
 import TipsScreen from './component/TipsScreen'
 import NewsScreen from './component/NewsScreen'
+import SeaCountriesList from './component/SeaCountriesList'
+import ThailandStatScreen from './component/ThailandStatScreen'
 
 
 
@@ -29,6 +31,9 @@ const StatisticStack = () => {
       <Stack.Screen name = "Quick" component = {QuickViewScreen} />
       <Stack.Screen name = "Global" component = {GlobalStatScreen} />
       <Stack.Screen name = "Indonesia" component = {IndonesiaStatScreen} />
+      <Stack.Screen name = "Sea" component = {SeaCountriesList} />
+      <Stack.Screen name = "Thai" component = {ThailandStatScreen} />
+      <Stack.Screen name = "Maintenance" component = {MaintenanceScreen} />
   </Stack.Navigator>
   )
 }

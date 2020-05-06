@@ -38,6 +38,11 @@ const cardList = [
         nav:'Indonesia',
         judul:'View Indonesia Statistic'
     },
+    {
+        imagesrc:require('../assets/seathumbnail.jpg'),
+        nav:'Sea',
+        judul:'View Southeast Asia Countries'
+    },
 ]
 
 
@@ -85,21 +90,6 @@ const StatisticScreen = ({navigation}) => {
                 ))
                
             }
-                <Card containerStyle={styles.cardContainer} title="Check Other Countries" titleStyle={{color:'#84DFE2'}} dividerStyle={{backgroundColor:'#1f1f1f'}}>
-                    {
-                        countryData.map((list,i)=> (
-                            <ListItem 
-                                key={i}
-                                containerStyle={{backgroundColor:'#1f1f1f'}}
-                                leftAvatar={{source:{uri: list.flagurl},overlayContainerStyle:{backgroundColor:'#1f1f1f'}}}
-                                rightIcon={{name:'ios-arrow-dropright',type:'ionicon',color:'#A4ADE9'}}
-                                title={list.name}
-                                titleStyle={{color:'white'}}
-                            />
-                        ))
-                       
-                    }  
-                </Card>
             
 
         </ScrollView>

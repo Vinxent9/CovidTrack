@@ -2,53 +2,20 @@ import React from 'react';
 import { StyleSheet, Text, View,FlatList,ScrollView,RefreshControl,Linking} from 'react-native';
 import {Icon,Card,Button,Image,Header,ListItem} from 'react-native-elements'
 
-
-class IndonesiaStatScreen extends React.Component {
+class ThailandStatScreen extends React.Component{
     constructor() {
         super()
         this.state = {
-            province:[],
-            indoSum:[],
+            ThaiSum:[],
             dataCovid:[],
             refreshing : false
         }
     }
 
-    renderItem = ({item}) => (
-        <View style={styles.dataContainer}>
-            
-            <Text style ={{color:'white'}}>
-                {item.provinsi}
-            </Text>
-
-            <View style={styles.dataContainerStatus}>
-                
-                <View style={styles.dataContainerStatRecovered}>
-                    <Text style={{fontWeight:'bold'}}>                
-                        {item.kasusSemb}
-                    </Text>
-                </View> 
-                
-                <View style={styles.dataContainerStatRed}>
-                    <Text style={{fontWeight:'bold'}}>                
-                        {item.kasusMeni}
-                    </Text>
-                </View>
-
-                <View style={styles.dataContainerStatYellow}>
-                    <Text style={{fontWeight:'bold'}}>                
-                        {item.kasusPosi}
-                    </Text>
-                </View> 
-               
-
-            </View>
-        </View>
-    )
 
     renderItemSummary = ({item}) => (
         <View 
-            style={{flex:1,padding:15,marginHorizontal:15}}
+            style={{flex:1,padding:15,marginHorizontal:18}}
         >   
         
         <Icon 
@@ -64,7 +31,6 @@ class IndonesiaStatScreen extends React.Component {
         
         </View>
     )
-
 
     renderItemGlobal = ({item}) => (
         <View 
@@ -89,30 +55,19 @@ class IndonesiaStatScreen extends React.Component {
         </View>
     )
 
-
-
     componentDidMount = () => {
-        this.getApiProvinsi()
         this.getApiSumm()
         this.getApiCovid()
       }
  
      onRefresh = () => {
-         this.getApiProvinsi()
          this.getApiSumm()
          this.getApiCovid()
      }
- 
-      getApiProvinsi = async () => {
-         this.setState({refreshing:true})
-         const response = await fetch('https://indonesia-covid-19.mathdro.id/api/provinsi')
-         const json = await response.json()
-         this.setState({province: json.data,refreshing:false})
-     }
 
-     getApiSumm = async () => {
+    getApiSumm = async () => {
         this.setState({refreshing:true})
-        const response = await fetch('https://covid19.mathdro.id/api/countries/Indonesia')
+        const response = await fetch('https://covid19.mathdro.id/api/countries/Thailand')
         const json = await response.json()
         const confirmed = ["Confirmed \n",json.confirmed.value,"ios-alert","#FFE082","#FFC68A"]
         const deaths = ["Deaths \n",json.deaths.value,"ios-heart-dislike","#EF9A9A","#B00020"]
@@ -133,9 +88,9 @@ class IndonesiaStatScreen extends React.Component {
         this.setState({dataCovid:totalData,refreshing:false})
     }
 
-     render(){
+    render(){
         return(
-            <ScrollView 
+            <ScrollView
                 style={styles.container}
                 refreshControl={
                     <RefreshControl 
@@ -146,7 +101,7 @@ class IndonesiaStatScreen extends React.Component {
             >
 
                 <Header
-                    centerComponent={{ text: 'Indonesia Statistic', style: { color: '#fff',fontWeight:'bold' } }}
+                    centerComponent={{ text: 'Thailand Statistic', style: { color: '#fff',fontWeight:'bold' } }}
                     containerStyle={{
                         backgroundColor:'#1f1f1f',
                         borderColor:'#1f1f1f'
@@ -172,7 +127,7 @@ class IndonesiaStatScreen extends React.Component {
                 <Card 
                     containerStyle={styles.cardContainer}
                 >
-                    <Text style={styles.styleText}>Indonesia Summary</Text>
+                    <Text style={styles.styleText}>Thailand Summary</Text>
                        <FlatList
                             horizontal
                             data={this.state.indoSum}
@@ -193,34 +148,7 @@ class IndonesiaStatScreen extends React.Component {
                         type="outline"
                         buttonStyle={{borderColor:'#A4ADE9',borderRadius:10}}
                         titleStyle={{color:'#A4ADE9',padding:20}}
-                        onPress={() => Linking.openURL('https://covid19.mathdro.id/api/countries/Indonesia/og')}
-                    />
-
-
-                </Card>
-                
-
-                    <Text style={styles.styleText}>Indonesia Province Statistic</Text>
-                    
-               
-                    <FlatList
-                        data={this.state.province}
-                        keyExtractor={({provinsi}, index) => provinsi}
-                        renderItem={this.renderItem}
-                        refreshing={this.state.refreshing}
-                        onRefresh={this.onRefresh}
-                    />
-
-                <Card containerStyle={styles.cardContainer}
-                    title="Tips from Kementrian Kesehatan Indonesia"
-                    titleStyle={{color:'#84DFE2'}}
-                    dividerStyle={{backgroundColor:'#1f1f1f'}}
-                >
-
-                    <Image 
-                        source={require('../assets/tips_kemkes.png')}
-                        style={{ width: 300, height: 300 }}
-                        resizeMode='contain'
+                        onPress={() => Linking.openURL('https://covid19.mathdro.id/api/countries/Thailand/og')}
                     />
                 </Card>
 
@@ -228,7 +156,9 @@ class IndonesiaStatScreen extends React.Component {
         )
     }
 
+
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -293,5 +223,4 @@ const styles = StyleSheet.create({
 
 
 
-
-export default IndonesiaStatScreen
+export default ThailandStatScreen

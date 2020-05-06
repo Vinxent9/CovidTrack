@@ -1,11 +1,11 @@
 import React, {useRef, useState} from 'react';
-import { StyleSheet, Text, View, Button,ScrollView} from 'react-native'
-import {Header,Avatar,Card,ListItem,Image,Icon} from 'react-native-elements'
+import { StyleSheet, Text, View,ScrollView} from 'react-native'
+import {Header,Avatar,Card,ListItem,Image,Icon,Button,Overlay} from 'react-native-elements'
 
-const NewsScreen = ({navigation}) => {
+const MaintenanceScreen = ({navigation}) => {
     return(
         <View style={styles.container}>
-              
+        
             <Header
                 leftComponent={{ icon: 'menu', color: '#fff',onPress:() => navigation.openDrawer() }}
                 centerComponent={{ text: 'Covid Track', style: { color: '#fff' } }}
@@ -23,6 +23,7 @@ const NewsScreen = ({navigation}) => {
                 color='white'
             />
             <Text style={styles.styleText}>Screen Under Construction</Text>
+        
 
         </View>
     )
@@ -40,6 +41,4 @@ const styles = StyleSheet.create({
     },
   });
 
-
-
-export default NewsScreen
+export default MaintenanceScreen
