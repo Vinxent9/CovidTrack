@@ -14,19 +14,19 @@ const countryData = [
         name:'Singapore',
         flagurl:'https://www.countryflags.io/sg/flat/64.png',
         sub:'Check Singapore Statistic',
-        nav:'Maintenance'
+        nav:'Singa'
     },
     {
         name:'Malaysia',
         flagurl:'https://www.countryflags.io/my/flat/64.png',
         sub:'Check Malaysia Statistic',
-        nav:'Maintenance'
+        nav:'Malay'
     },
     {
         name:'Philippines',
         flagurl:'https://www.countryflags.io/ph/flat/64.png',
         sub:'Check Philippines Statistic',
-        nav:'Maintenance'
+        nav:'Philip'
     },
 ]
 
@@ -45,8 +45,6 @@ const SeaCountriesList = ({navigation}) => {
                 }}
                 barStyle="light-content"
             />
-
-            {/* <Card containerStyle={styles.cardContainer} title="Check Other Countries" titleStyle={{color:'#84DFE2'}} dividerStyle={{backgroundColor:'#1f1f1f'}}> */}
                     {
                         countryData.map((list,i)=> (
                             <ListItem 
@@ -63,7 +61,7 @@ const SeaCountriesList = ({navigation}) => {
                         ))
                        
                     }  
-                {/* </Card> */}
+              
 
 
         </View>

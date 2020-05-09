@@ -17,8 +17,9 @@ import TipsScreen from './component/TipsScreen'
 import NewsScreen from './component/NewsScreen'
 import SeaCountriesList from './component/SeaCountriesList'
 import ThailandStatScreen from './component/ThailandStatScreen'
-
-
+import SingaporeStatScreen from './component/SingaporeStatScreen'
+import MalayStatScreen from './component/MalayStatScreen'
+import PhilippinesStatScreen from './component/PhilippinesStatScreen'
 
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator();
@@ -33,6 +34,9 @@ const StatisticStack = () => {
       <Stack.Screen name = "Indonesia" component = {IndonesiaStatScreen} />
       <Stack.Screen name = "Sea" component = {SeaCountriesList} />
       <Stack.Screen name = "Thai" component = {ThailandStatScreen} />
+      <Stack.Screen name = "Singa" component = {SingaporeStatScreen} />
+      <Stack.Screen name = "Malay" component = {MalayStatScreen} />
+      <Stack.Screen name = "Philip" component = {PhilippinesStatScreen} />
       <Stack.Screen name = "Maintenance" component = {MaintenanceScreen} />
   </Stack.Navigator>
   )

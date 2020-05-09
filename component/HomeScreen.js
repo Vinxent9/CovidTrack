@@ -79,7 +79,7 @@ const HomeScreen = ({navigation}) => {
                     ref={playerRef}
                     height={200}
                     width={300}
-                    videoId={"aKLDmBMtkMQ"}
+                    videoId={"d6VRjykJuX0"}
                     play={playing}
                     onChangeState={event => console.log(event)}   
                     onError={e => console.log(e)}
@@ -100,7 +100,7 @@ const HomeScreen = ({navigation}) => {
                     <ListItem
                         containerStyle={styles.listContainer}
                         key={i}
-                        leftAvatar={{icon:{name:list.ikon, type:list.tipe,color:list.ikoncolor},overlayContainerStyle:{backgroundColor:'#1f1f1f'}}}
+                        leftAvatar={{icon:{name:list.ikon, type:list.tipe,color:list.ikoncolor,size:25},overlayContainerStyle:{backgroundColor:'#1f1f1f'}}}
                         rightIcon={{name:'ios-arrow-dropright',type:'ionicon',color:'#9DBFF9'}}
                         title={list.nama}
                         subtitle={list.subjudul}
